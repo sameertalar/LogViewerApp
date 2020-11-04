@@ -65,6 +65,24 @@
     width: 1920px;
   }
 
+  .dont-break-out {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link),
@@ -158,14 +176,22 @@
                   />
                 </div>
               </div>
+              <div class="m-3">
+                <button type="submit" class="btn btn-primary">
+                  Search Logs
+                </button>
+                <button
+                  type="submit"
+                  class="ml-2 btn btn-outline-secondary"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Tooltip on bottom"
+                >
+                  Reset Filters
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="m-3">
-          <button type="submit" class="btn btn-primary">Search Logs</button>
-          <button type="submit" class="ml-2 btn btn-outline-secondary">
-            Reset Filters
-          </button>
         </div>
       </div>
       <div class="col-sm-4">
@@ -256,7 +282,7 @@
       <div class="col-sm-2"></div>
     </div>
     <div class="row mt-3">
-      <table class="table table-sm table-hover table-bordered">
+      <table class="table table-sm table-bordered">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -268,6 +294,7 @@
 
             <th scope="col">UserName</th>
             <th scope="col">MachineName</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -286,6 +313,16 @@
             </td>
             <td>LT_encode11</td>
             <td>apves60310</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Details
+              </button>
+            </td>
           </tr>
           <tr>
             <th scope="row">12</th>
@@ -302,6 +339,7 @@
             </td>
             <td>6610</td>
             <td>apves54225</td>
+            <td>link</td>
           </tr>
           <tr>
             <th scope="row">293596</th>
@@ -312,12 +350,13 @@
             <td>NULL</td>
             <td>DMZMGMT\WEVES47816$</td>
             <td>WEVES47816</td>
+            <td>link</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="row">
-      <div class="col-lg-2"></div>
+      <div class="col-lg-2">Hello</div>
 
       <div class="col-lg-6"></div>
     </div>
@@ -337,6 +376,190 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log Details</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="text-wrap">
+            <table class="table table-striped table-dark">
+              <tbody>
+                <tr>
+                  <th>Log Id</th>
+                  <td>10763</td>
+                </tr>
+                <tr>
+                  <th>Date</th>
+                  <td>2020-10-28 6:27:14</td>
+                </tr>
+                <tr>
+                  <th>Level</th>
+                  <td>ERROR</td>
+                </tr>
+                <tr>
+                  <th>ApplicationName</th>
+                  <td>SAFES</td>
+                </tr>
+                <tr>
+                  <th>Logger</th>
+                  <td>
+                    Safes.Core.BAL.BusinessComponents.MissingRequirementsBL
+                  </td>
+                </tr>
+                <tr>
+                  <th>Message</th>
+                  <td class="dont-break-out">
+                    System.FormatException: Input string was not in a correct
+                    format. at System.Number.ParseDouble(String value,
+                    NumberStyles options, NumberFormatInfo numfmt) at
+                    System.Convert.ToDouble(String value) at
+                    AllSavers.Data.Linq.Validation.ValidationRulesBL.IsDependent(pSelectBusinessMember_Result
+                    BusinessMember, String CompareValue) in
+                    F:\Build\Agent1\_work\598\s\AllSavers.Data.Linq\Validation\ValidationRulesBL.cs:line
+                    453 at
+                    AllSavers.Data.Linq.Validation.ValidationRulesBL.CreateRulesForStatus(Object
+                    target, String stateCode, String businessObjectName, List`1
+                    dependOnBusinessObjects, String activityCode, String
+                    displayMessageType, Int32 parentID, String appType, Int32
+                    ERAId) in
+                    F:\Build\Agent1\_work\598\s\AllSavers.Data.Linq\Validation\ValidationRulesBL.cs:line
+                    304 at
+                    AllSavers.Data.Linq.Entities.Encoding_Employee.INDIVIDUALApplicantss.GetAllBrokenRulesForStatus(Object
+                    target, EMPLOYERApplications EA, String phase, String
+                    appType, String productCode, Nullable`1 WaiveSelfFlag,
+                    List`1 AppRegList) in
+                    F:\Build\Agent1\_work\598\s\AllSavers.Data.Linq\Partial\ALS_PROD\INDIVIDUALApplicantss.cs:line
+                    1589 at
+                    AllSavers.Data.Linq.Entities.Encoding_Employer.APPLICANTApplicationss.GetAllBrokenRulesForStatus(Object
+                    target, EMPLOYERApplications EA, String phase, String Type,
+                    String SettingValue_MinWorkHrs, String ProductCode,
+                    pSelectApplicantWaiversListByERAID_Result
+                    objAPPLICANTWaiver, List`1 AppRegList, INDIVIDUALApplicantss
+                    objINDIVIDUALApplicantss, List`1 dependOnBusinessObjects) in
+                    F:\Build\Agent1\_work\598\s\AllSavers.Data.Linq\Partial\ALS_PROD\APPLICANTApplicationss.cs:line
+                    1360 at
+                    Safes.Core.BAL.BusinessComponents.ALS_PROD.ApplicantApplicationBL.GetEncodingAARequirementsForStatus(APPLICANTApplicationss
+                    AA, EMPLOYERApplications EA, String StatusCode, Boolean
+                    ispaper, String SettingValue_MinWorkHrs, String ProductCode,
+                    pSelectApplicantWaiversListByERAID_Result
+                    objAPPLICANTWaiver, List`1 AppRegList, INDIVIDUALApplicantss
+                    objINDIVIDUALApplicantss) at
+                    Safes.Core.BAL.BusinessComponents.MissingRequirementsBL.UpdateIndividualsEncodingStatus(Int32
+                    eraid)
+                  </td>
+                </tr>
+                <tr>
+                  <th>Exception</th>
+                  <td class="dont-break-out">
+                    System.NullReferenceException: Object reference not set to
+                    an instance of an object. at
+                    AllSavers.Controllers.MemberController.GetMessageBoardLogoutMessage()
+                    at lambda_method(Closure , ControllerBase , Object[] ) at
+                    System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext
+                    controllerContext, IDictionary`2 parameters) at
+                    System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext
+                    controllerContext, ActionDescriptor actionDescriptor,
+                    IDictionary`2 parameters) at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult
+                    asyncResult, ActionInvocation innerInvokeState) at
+                    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
+                    at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
+                    at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
+                    at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult
+                    asyncResult, ExecuteCoreState innerState) at
+                    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.Controller.EndExecute(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult
+                    asyncResult, ProcessRequestState innerState) at
+                    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult
+                    asyncResult) at
+                    System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult
+                    result) at
+                    System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+                    at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep
+                    step) at
+                    System.Web.HttpApplication.ExecuteStep(IExecutionStep step,
+                    Boolean& completedSynchronously)
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>UserName</th>
+                  <td>LT_encode11</td>
+                </tr>
+                <tr>
+                  <th>MachineName</th>
+                  <td>apves60310</td>
+                </tr>
+                <tr>
+                  <th>Url</th>
+                  <td>
+                    http://safes-stage.uhc.com/SAFES2_Ex/Export.aspx?ERAID=413986
+                  </td>
+                </tr>
+                <tr>
+                  <th>Browser</th>
+                  <td>InternetExplorer11</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="border text-center">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer><span class="text-muted">&copy; All Savers 2020</span></footer>
 
