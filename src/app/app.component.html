@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -49,7 +40,7 @@
     display: flex;
     margin: 82px auto 32px;
     padding: 0 16px;
-    max-width: 960px;
+    max-width: 100%;
     flex-direction: column;
     align-items: center;
   }
@@ -89,20 +80,7 @@
     }
   }
 </style>
-<link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-  crossorigin="anonymous"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <img
@@ -116,38 +94,243 @@
 
 <div class="content" role="main">
   <!-- Next Steps -->
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-sm-12">
-        <h3>Hello World</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Filter Criteria</h5>
+            <div id="basicFilters">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="selectLevel">Level</label>
+                  <select
+                    id="selectLevel"
+                    class="selectpicker form-control"
+                    multiple
+                  >
+                    <option>All</option>
+                    <option selected>Error</option>
+                    <option>Fatal</option>
+                    <option>Information</option>
+                    <option>Warning</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="selectPeriod">Period</label>
+                  <select id="selectPeriod" class="selectpicker form-control">
+                    <option>Today</option>
+                    <option selected>1 day</option>
+                    <option>3 days</option>
+                    <option>1 week</option>
+                    <option>1 month</option>
+                    <option>6 months</option>
+                    <option>Custom</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFromDate">From</label>
+                  <input
+                    type="datetime-local"
+                    id="inputFromDate"
+                    class="form-control"
+                    value="2020-11-01T10:30"
+                    min="2017-01-01T00:00"
+                    max="2021-06-01T00:00"
+                  />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="inputToDate">To</label>
+                  <input
+                    type="datetime-local"
+                    id="inputToDate"
+                    class="form-control"
+                    value="2020-11-11T19:30"
+                    min="2017-01-01T00:00"
+                    max="2021-06-01T00:00"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-3">
+          <button type="submit" class="btn btn-primary">Search Logs</button>
+          <button type="submit" class="ml-2 btn btn-outline-secondary">
+            Reset Filters
+          </button>
+        </div>
       </div>
+      <div class="col-sm-4">
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Additional Filters
+                </button>
+              </h5>
+            </div>
+
+            <div
+              id="collapseOne"
+              class="collapse"
+              aria-labelledby="headingOne"
+              data-parent="#accordion"
+            >
+              <div class="card-body">
+                <div id="additionalFilters">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="selectApplication">Application</label>
+                      <select
+                        id="selectLevel"
+                        class="selectpicker form-control"
+                        multiple
+                      >
+                        <option selected>All</option>
+                        <option>AllSavers</option>
+                        <option>SAFES</option>
+                        <option>AllSavers.API</option>
+                        <option>AllSavers.Stepwise.Service</option>
+                        <option>AllSavers.Document.Service</option>
+                        <option>AllSavers.Group.Service</option>
+                        <option>AllSavers.Product.Service</option>
+                        <option>AllSavers.Rate.Service</option>
+                        <option>AllSavers.Setting.Service</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputUserName">User Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputUserName"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputMachine">Machine</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputMachine"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputMessage">Message</label>
+                    <input type="text" class="form-control" id="inputMessage" />
+                  </div>
+                  <div class="form-group">
+                    <label for="inputException">Exception</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputException"
+                    />
+                  </div>
+
+                  <div class="form-row"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    <div class="row mt-3">
+      <table class="table table-sm table-hover table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Level</th>
+            <th scope="col">ApplicationName</th>
+            <th scope="col">Message</th>
+            <th scope="col">Exception</th>
+
+            <th scope="col">UserName</th>
+            <th scope="col">MachineName</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">10763</th>
+            <td>10/28/2020 6:27:14</td>
+            <td>ERROR</td>
+            <td>SAFES</td>
+            <td>
+              System.NullReferenceException: Object reference not set to an
+              instance of an object.
+            </td>
+            <td>
+              AllSavers.Core.Util.AllSaversException: The data reader is
+              incompatible with the specified
+            </td>
+            <td>LT_encode11</td>
+            <td>apves60310</td>
+          </tr>
+          <tr>
+            <th scope="row">12</th>
+            <td>10/6/2020 8:39:22</td>
+            <td>ERROR</td>
+            <td>AllSavers</td>
+            <td>
+              System.ArgumentException: The parameter 'addresses' cannot be an
+              empty string.
+            </td>
+            <td>
+              AllSavers.Core.Util.AllSaversException: Value cannot be null.
+              Parameter name: source --->
+            </td>
+            <td>6610</td>
+            <td>apves54225</td>
+          </tr>
+          <tr>
+            <th scope="row">293596</th>
+            <td>6/6/2020 23:24:08</td>
+            <td>Information</td>
+            <td>AllSavers.Group.Service</td>
+            <td>COMPLETE STATUS:537</td>
+            <td>NULL</td>
+            <td>DMZMGMT\WEVES47816$</td>
+            <td>WEVES47816</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="row">
-      <div class="col-sm-6 text-right">
-        <textarea class="text-primary" id="txtFld" cols="50" rows="2">
-Hello</textarea
-        >
-      </div>
-      <div class="col-sm-6">
-        <i class="fa fa-wrench"></i> Hello world
+      <div class="col-lg-2"></div>
 
-        <select class="selectpicker" multiple>
-          <option>Mustard</option>
-          <option>Ketchup</option>
-          <option>Relish</option>
-        </select>
-
-        <button type="button" id="speakBtn" class="btn btn-success">
-          Test
-        </button>
-
-        <select class="myselect">
-          <option>Mustard1</option>
-          <option>Ketchup1</option>
-          <option>Relish1</option>
-        </select>
-      </div>
+      <div class="col-lg-6"></div>
     </div>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-2"></div>
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-12"></div>
+    </div>
+
     <div class="row text-center">
       <div class="col-sm-12">
         <span class="text-danger" id="result"></span>
@@ -155,7 +338,7 @@ Hello</textarea
     </div>
   </div>
   <!-- Footer -->
-  <footer>This is my footer</footer>
+  <footer><span class="text-muted">&copy; All Savers 2020</span></footer>
 
   <svg
     id="clouds"
@@ -184,19 +367,3 @@ Hello</textarea
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet></router-outlet>
-<script
-  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-  crossorigin="anonymous"
-></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
