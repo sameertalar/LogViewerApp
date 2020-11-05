@@ -18,22 +18,16 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #002677;
     color: white;
     font-weight: 600;
   }
 
   .toolbar img {
     margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
   }
 
   .content {
@@ -104,10 +98,10 @@
   <img
     height="40"
     alt="Uhg Logo"
-    src="https://www.uhc.com/content/dam/uhcdotcom/website-assets/logo-blue.svg"
+    src="https://www.uhc.com/content/dam/uhcdotcom/website-assets/logo-mobile.svg"
   />
 
-  <i class="fa fa-hourglass"></i>
+  <div style="float: right">All Savers®</div>
 </div>
 
 <div class="content" role="main">
@@ -116,9 +110,9 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-4">
-        <div class="card">
+        <div class="card border-uhg">
           <div class="card-body">
-            <h5 class="card-title">Filter Criteria</h5>
+            <h5 class="card-title text-uhg">Filter Criteria</h5>
             <div id="basicFilters">
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -177,8 +171,8 @@
                 </div>
               </div>
               <div class="m-3">
-                <button type="submit" class="btn btn-primary">
-                  Search Logs
+                <button type="submit" class="btn btn-primary bg-uhg">
+                  <i class="fa fa-search"></i> Search Logs
                 </button>
                 <button
                   type="submit"
@@ -206,7 +200,8 @@
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  Additional Filters
+                  <i class="fa fa-filter" aria-hidden="true"></i> Additional
+                  Filters
                 </button>
               </h5>
             </div>
@@ -283,7 +278,7 @@
     </div>
     <div class="row mt-3">
       <table class="table table-sm table-bordered">
-        <thead class="thead-dark">
+        <thead class="text-uhg bg-uhg-secondary">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
@@ -299,7 +294,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">10763</th>
+            <td>10763</td>
             <td>10/28/2020 6:27:14</td>
             <td>ERROR</td>
             <td>SAFES</td>
@@ -316,7 +311,7 @@
             <td>
               <button
                 type="button"
-                class="btn btn-secondary btn-sm"
+                class="btn btn-secondary bg-uhg btn-sm"
                 data-toggle="modal"
                 data-target="#exampleModal"
               >
@@ -325,7 +320,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">12</th>
+            <td>12</td>
             <td>10/6/2020 8:39:22</td>
             <td>ERROR</td>
             <td>AllSavers</td>
@@ -342,7 +337,7 @@
             <td>link</td>
           </tr>
           <tr>
-            <th scope="row">293596</th>
+            <td>293596</td>
             <td>6/6/2020 23:24:08</td>
             <td>Information</td>
             <td>AllSavers.Group.Service</td>
